@@ -1,0 +1,20 @@
+//Fahrenheit 
+import java.util.Scanner;
+
+public class Fahrenheit {
+    Scanner dany=new Scanner(System.in);
+    public static void main(String[] args) {
+      
+       Fahrenheit obj=new Fahrenheit();
+       float fah = obj.calculation();
+       System.out.println(fah);
+    }
+    
+    float calculation() {
+        float C = dany.nextFloat();
+        float F=(C*9/5)+32;
+        return F;
+        
+    }
+    
+}
