@@ -1,0 +1,20 @@
+//Average
+public class Average {
+    
+    Scanner dany =new Scanner(System.in);
+    public static void main(String[] args) {
+       Average obj = new Average();
+       float Avg=obj.avg();
+       System.out.println("Average :"+Avg);
+        }
+    int avg(){
+        int mark=dany.nextInt();
+        int marks,i,count=0;
+        for(i = 0 ; i<mark ;i++){
+            marks=dany.nextInt();
+            count=count+marks;
+        }
+        int avg=count/mark;
+        return avg; 
+    }
+}
