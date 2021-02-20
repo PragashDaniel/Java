@@ -1,3 +1,5 @@
+//ODD or EVEN
+
 import java.util.Scanner;
 
 public class Oddoreven {
