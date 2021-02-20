@@ -1,4 +1,6 @@
-//Average
+//AVERAGE
+
+
 public class Average {
     
     Scanner dany =new Scanner(System.in);
