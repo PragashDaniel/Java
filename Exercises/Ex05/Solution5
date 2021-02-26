@@ -1,0 +1,27 @@
+//Another solution
+
+public class OddorEven {
+    Scanner dany=new Scanner(System.in);
+    public static void main(String[] args){
+        Scanner dany=new Scanner(System.in);
+        OddorEven obj=new OddorEven(); 
+        int i = dany.nextInt();
+        if(i%2==0){
+            int c=dany.nextInt();
+            float C=obj.CtoF(c);
+            System.out.println("Celsius to Fahrenheit :"+C);
+        }else{
+            int f=dany.nextInt();
+            float F=obj.FtoC(f);
+            System.out.println("Fahrenheit to Celsius :"+F);
+        }
+    }
+    float CtoF(int c){
+        
+       return (c*9/5)+32;
+   }
+    float FtoC(int f){
+        
+        return (f-32)*5/9;
+    }
+}
