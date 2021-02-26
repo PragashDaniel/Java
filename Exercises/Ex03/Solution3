@@ -1,0 +1,16 @@
+public class Avg {
+    public static void main(String[] args){
+        Avg obj = new Avg();
+        Scanner dany=new Scanner(System.in);
+        float a = dany.nextFloat();
+        float b = dany.nextFloat();
+        float c = dany.nextFloat();
+        int average = obj.avg(a,b,c);
+        System.out.println("Average :"+average);
+    }
+
+    int avg(float a, float b, float c){
+        int d = (int)(a+b+c);
+        return  d/3;
+    }
+}
