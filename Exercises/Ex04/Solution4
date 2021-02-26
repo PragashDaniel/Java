@@ -1,0 +1,57 @@
+//Another Solution
+public class Conversion {
+
+    public static void main(String[] args) {
+   
+       Conversion obj =new Conversion();
+       float a=obj.inttofloat(5);
+       System.out.println("Integer to Float :"+a);
+       
+       int b=obj.floattoint(20.5f);
+       System.out.println("Float to Integer :"+b);
+       
+       float c=obj.stringtofloat("500");
+       System.out.println("String to Float :"+c);
+       
+       int d=obj.stringtoint("500");
+       System.out.println("String to Integer :"+d);
+       
+       String e=obj.floattostring(12.5f);
+       System.out.println("Float to String :"+e);
+       
+       String f=obj.inttostring(10);
+       System.out.println("Integer to Float :"+f);
+    }
+    
+    float inttofloat(int a) {
+        float b=(int)a;
+        return b;
+    }
+    
+    int floattoint(float a) {
+        
+        int b=(int)a;
+        return b;
+    }
+    
+    float stringtofloat(String a){
+        
+        float b=Float.parseFloat(a);
+        return b;
+    }
+     
+    int stringtoint(String a){
+        int b=Integer.parseInt(a);
+        return b;
+    }
+    String floattostring(float a){
+        
+        String b=String.valueOf(a);
+        return b;
+    }
+    String inttostring(int a) {
+        
+        String b=String.valueOf(a);
+        return b;
+    }
+}
