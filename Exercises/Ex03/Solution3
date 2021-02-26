@@ -1,3 +1,5 @@
+//Another solution
+
 public class Avg {
     public static void main(String[] args){
         Avg obj = new Avg();
