@@ -20,10 +20,8 @@ public class Exercise08 {
     } 
     int[] filter(int[] array){
         int a[]=new int[number];
-        for(int i=0;i<array.length;i++){
-            System.out.println(array.length);  
-            a[i]=array[array.length-1-i]; 
-              
+        for(int i=0;i<array.length;i++){  
+            a[i]=array[array.length-i-1]; 
     }
     return a;
    }
