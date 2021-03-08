@@ -1,0 +1,23 @@
+public class Exercise09 {
+
+    public static void main(String[] args) {
+        Scanner dany =new Scanner(System.in);
+        String word =dany.nextLine();
+        String word1=function1(word);
+        System.out.println("Without inbuilt function : "+word1);
+        String word2=function2(word);
+        System.out.println("With inbuilt function : "+word2);
+    }
+    static String function1(String word){
+        String word1="";
+        for(int i=1;i<=word.length();i++){
+            word1=word1+word.charAt(word.length()-i);
+        }
+        return word1;
+    }
+    static String function2(String word){
+        StringBuffer Word = new StringBuffer(word);
+        return Word.reverse().toString(); 
+    }
+    
+}
