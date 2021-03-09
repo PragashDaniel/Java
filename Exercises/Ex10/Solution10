@@ -1,0 +1,27 @@
+public class Exercise10 {
+
+    static Scanner dany=new Scanner(System.in);
+    static int n=dany.nextInt();
+    public static void main(String[] args) {
+        System.out.println("Total values stored in array :"+n );
+        System.out.print(" E = ");
+        int E = dany.nextInt();
+        Random num=new Random();
+        int[] L=new int[n];
+        for(int i=0;i<L.length;i++){
+            L[i]=num.nextInt(100);
+            System.out.print(L[i]+"\t");
+        }
+        System.out.println("\n");
+        System.out.println(function(L,E));    
+    }
+    static int function(int[] array,int num){
+        for(int i=0;i<array.length;i++){
+            if(array[i]==num){
+               return i;
+            } 
+        }
+        return -100;
+    }
+    
+}
