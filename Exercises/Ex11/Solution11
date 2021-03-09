@@ -1,0 +1,28 @@
+
+class Arith {
+    
+    public static void main(String args[]){
+        Arith obj =new Arith();
+        Scanner dany =new Scanner(System.in);
+        System.out.print("Enter the first number = ");
+        int a=dany.nextInt();
+        System.out.print("Enter the second number = ");
+        int b=dany.nextInt();
+        System.out.println("Addition : "+obj.Add(a,b));
+        System.out.println("Subtraction : "+obj.Sub(a,b));
+        System.out.println("Multiplication : "+obj.mul(a,b));
+        System.out.println("Division : "+obj.div(a,b));
+    }
+    private int Add(int a,int b){
+        return a+b;
+    }      
+    private int Sub(int a,int b){
+        return a-b;
+    }
+    private int mul(int a,int b){
+        return a*b;
+    }
+    private int div(int a,int b){
+        return a/b;
+    }
+}
