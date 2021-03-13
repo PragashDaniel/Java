@@ -1,0 +1,94 @@
+public class Exercise12 {
+    
+    static Scanner dany =new Scanner(System.in);
+    static int n=dany.nextInt();
+    
+    static int[] num=new int[n];
+    static float mean;
+    static float varience;
+    
+    
+    Exercise12(){
+        
+        System.out.println("Size of array : "+n);
+        
+        int arr[]=new int[n];
+        Random rno=new Random();
+        for(int i=0;i<arr.length;i++){
+            arr[i]=rno.nextInt(100);
+            System.out.print(arr[i]+"\t");
+        }
+        System.out.println("\n");
+        num=arr;
+        
+    }
+    
+    
+    public static void main(String[] args) {
+        
+        Exercise12 obj = new Exercise12();
+        System.out.println("Mean : "+mean());
+        System.out.println("Mode : "+mode());
+        System.out.println("Varience : "+varience());
+        System.out.println("Standard Deviation : "+sd());
+        System.out.println("No. of. elements : "+tostring());
+    }
+    
+    
+    static float mean(){
+        float sum=0;
+        for(int i=0;i<num.length;i++){
+            sum+=num[i];
+        }
+        float t=sum/num.length;
+        mean=t;
+        return t;
+    }
+    
+    
+    static float mode(){
+        float element=0;
+        float count=0;
+        for(int i=0;i<num.length;i++){
+            float c=0;
+            for(int j=0;j<num.length;j++){
+                if(num[j]==num[i]){
+                    c++;
+                }   
+            }
+            if(c>count){
+                element=num[i];
+                count=c;
+            }          
+        }
+        System.out.println("Frequency : "+count);
+        return element;
+    }
+    
+    
+    static float varience(){
+        float var=0;
+        for(int i=0;i<num.length;i++){
+            var=(float)(var+Math.pow(num[i]-mean,2));
+        }
+        var=var/num.length;
+        varience=var;
+        return varience;
+    }
+    
+    
+    static float sd(){
+        float sd=(float)Math.sqrt(varience);
+        return sd;
+    }
+    
+    
+    static String tostring(){
+        int count=0;
+        for(int i=0;i<num.length;i++){
+            count++;
+        }
+        return String.valueOf(count);
+        
+    }
+}
