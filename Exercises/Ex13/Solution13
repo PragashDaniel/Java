@@ -48,7 +48,7 @@ public class Solution13 extends FractionArith{
           Fraction f1=new Fraction(1,2);
           Fraction f2=new Fraction(1,2);
           System.out.println("Fraction Addition : "+fractionadd(f1,f2));
-          System.out.println("Farction Subraction : "+fractionsub(f1,f2));
+          System.out.println("Farction Subtraction : "+fractionsub(f1,f2));
           System.out.println("Fraction Multiplication : "+fractionmul(f1,f2));
     }
     
