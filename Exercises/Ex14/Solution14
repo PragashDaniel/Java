@@ -56,9 +56,12 @@ class Two implements Printer {
 
 class Primes {
     public int[] primes(int n){
-      int[] a=new int[5];
+      Scanner dany=new Scanner(System.in);
+        System.out.println("Enter the range : ");
+      int range=dany.nextInt();
+      int[] a=new int[n];
       int x=0;
-      for(int i=2;i<=n;i++){
+      for(int i=2;i<=range;i++){
           boolean name=true;
           for(int j=2;j<i;j++){
               if(i%j==0){
@@ -79,14 +82,12 @@ public class Solution14 {
     public static void main(String[] args)
     {
         Scanner dany = new Scanner(System.in);
-        System.out.println("Enter pattern one value :");
-        int x = dany.nextInt();
-        System.out.println("Enter pattern two value :");
-        int y = dany.nextInt();
+        System.out.println("Enter the values :");
+        int n = dany.nextInt();
         One one=new One();
-        one.display(x);
+        one.display(n);
         Two two = new Two();
-        two.display(y);
+        two.display(n);
 
     }
 }
