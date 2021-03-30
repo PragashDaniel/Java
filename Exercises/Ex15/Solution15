@@ -1,0 +1,56 @@
+class ComplexNumber{
+    float real,img;
+    ComplexNumber(float r,float i){    
+       real=r;
+       img=i;
+    }
+    public String toString(){
+        return "Real = "+real+" Imaginary = "+img;
+    }
+}
+abstract class Arithmetic{
+    final float add(float r,float i){
+        return r+i;
+    }
+    final float sub(float r,float i){
+        return r-i;
+    }
+    final float mul(float r,float i){
+        return r*i;
+    }
+    abstract void display(ComplexNumber value);
+}
+class ComplexArith extends Arithmetic {
+    ComplexNumber complexadd(ComplexNumber r,ComplexNumber i){
+        System.out.println("Addition :");
+        return new ComplexNumber(add(r.real,i.real),add(r.img,i.img));
+    }
+    ComplexNumber complexsub(ComplexNumber r,ComplexNumber i){
+        System.out.println("Subtraction :");
+        return new ComplexNumber(sub(r.real,i.real),sub(r.img,i.img));
+    }
+    ComplexNumber complexmul(ComplexNumber r,ComplexNumber i){
+        System.out.println("Multiplication :");
+        return new ComplexNumber(mul(r.real,i.real)-mul(r.img,i.img),mul(r.img,i.real)+mul(r.real,i.img));
+    }
+    void display(ComplexNumber value){
+        System.out.println(value.real+" "+value.img);
+    }
+}
+public class Solution15 extends ComplexArith{
+    
+    public static void main(String[] args) {
+        
+        ComplexArith obj=new ComplexArith();
+        ComplexNumber obj1=new ComplexNumber(2,2.3f);
+        ComplexNumber obj2=new ComplexNumber(2,2.4f);
+        System.out.println("Complex NUmbers :");
+        obj.display(obj1);
+        obj.display(obj2);
+        System.out.println(obj.complexadd(obj1,obj2));
+        System.out.println(obj.complexsub(obj1,obj2));
+        System.out.println(obj.complexmul(obj1,obj2));
+        
+      }
+    
+}
