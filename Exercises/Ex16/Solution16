@@ -1,0 +1,126 @@
+class Sage{
+    String predictPersonality(String person_name,Integer favorite_number){    
+        int nametonum=personNameToNumber(person_name);
+        int value=(nametonum+favorite_number)%3;
+        switch(value){
+            case 0:
+                System.out.println(" ANALYSTS ");
+                System.out.println("Architect :");
+                System.out.println("Imaginative and Stategic thinkers with a plan for everything.");
+                System.out.println("or");
+                System.out.println("Logician :");
+                System.out.println("Innovative inventors with an unquenchable thrist for knowldge.");
+                System.out.println("or");
+                System.out.println("Commander :");
+                System.out.println("Bold,Imaginative and strong-willed leaders,always finding a way-or making one.");
+                System.out.println("or");
+                System.out.println("Debater :");
+                System.out.println("Smart and curious thinkers who cannot resist an intellectual challange.");
+                break;
+            case 1:
+                System.out.println(" DIPLOMATS ");
+                System.out.println("Advocate :");
+                System.out.println("Quiet and mystical,yet very inspiring and tireless idealists.");
+                System.out.println("or");
+                System.out.println("Mediator :");
+                System.out.println("Poetic,kind and altruistic people,always eager to help a good cause.");
+                System.out.println("or");
+                System.out.println("Protagonist :");
+                System.out.println("Charismatic and inspiring leaders,able to mesmerize their listeners.");
+                System.out.println("or");
+                System.out.println("Campaigner :");
+                System.out.println("Enthusiastic ,creative and sociable free spirits,who can always find a reason to smile.");
+                break;
+            case 2:
+                System.out.println(" SENTINELS ");
+                System.out.println("Logistician :");
+                System.out.println("Practical and fact minded individuals,whose reliability cannot be doubted.");
+                System.out.println("or");
+                System.out.println("Defender :");
+                System.out.println("Very dedicated and warm protectors,always readyto defend their loved ones.");
+                System.out.println("or");
+                System.out.println("Executive :");
+                System.out.println("Excellent administrators,unsurpassed at managing things-or people.");
+                System.out.println("or");
+                System.out.println("Consul :");
+                System.out.println("Extraordinary caring,socail and popular people,always eager to help.");
+                break;
+            case 3:
+                System.out.println(" EXPLORERS ");
+                System.out.println("Virtuoso :");
+                System.out.println("Bold and practical experimenters,masters of all kind of tools.");
+                System.out.println("or");
+                System.out.println("Adventurer :");
+                System.out.println("Flexible and chraming artists,always readyto explore and experience something new.");
+                System.out.println("or");
+                System.out.println("Entrepreneur ;");
+                System.out.println("Smart,energetic and very perceptive people,who truly enjoy living on the edge.");
+                System.out.println("or");
+                System.out.println("Entertainer");
+                System.out.println("Spontaneos,energetic and enthusiastic people - life is never boring around them.");
+                break;
+            default:
+                System.out.println("Entered a invalid number");   
+        } 
+        return "";
+    }
+    static Integer personNameToNumber(String person_name){
+        final Map<Character,Integer> map;
+        map=new HashMap<>();
+        map.put('a',1);
+        map.put('b',2);
+        map.put('c',3);
+        map.put('d',4);
+        map.put('e',5);
+        map.put('f',6);
+        map.put('g',7);
+        map.put('h',8);
+        map.put('i',9);
+        map.put('j',10);
+        map.put('k',11);
+        map.put('l',12);
+        map.put('m',13);
+        map.put('n',14);
+        map.put('o',15);
+        map.put('p',16);
+        map.put('q',17);
+        map.put('r',18);
+        map.put('s',19);
+        map.put('t',20);
+        map.put('u',21);
+        map.put('v',22);
+        map.put('w',23);
+        map.put('x',24);
+        map.put('y',25);
+        map.put('z',26);
+        Integer num=0;
+        for(int i=0;i<person_name.length();i++){
+            char[] ch=person_name.toCharArray();
+            num+=map.get(ch[i]);   
+        }
+        return num;
+    }
+}
+public class Solution16 extends Sage{
+
+    public static void main(String[] args) {
+       Sage obj=new Sage();
+       Scanner dany=new Scanner(System.in);
+       int i=1;
+        
+          do{
+             System.out.println("Enter your name :");
+             String name=dany.next();
+             System.out.print("Enter your favorite number : ");
+             int No=dany.nextInt();
+             obj.predictPersonality(name,No);
+             System.out.println("\n   Are you want to continue press 1 ");
+             System.out.println("         For exit press 0");
+             int n=dany.nextInt();
+             i=i*n;
+          }while(i==1);
+       
+      
+    }
+    
+}
