@@ -1,0 +1,90 @@
+class Multiply{
+
+    Integer process(Integer a,Integer b){
+       int c=a*b;
+       display(c);
+       return c;
+       
+    }
+    Integer[] process(Integer a[],Integer b[]){
+       Integer c[]=new Integer[a.length];
+       try{
+         if(a.length==b.length){ 
+            for(int i=0;i<c.length;i++){
+               c[i]=a[i]*b[i];
+            } 
+         display(c);
+         }
+         else{
+             throw new Exception("Size of Arrays are not equal"); 
+         }
+       }
+       catch(Exception d){
+           System.out.println(d.getMessage());
+       }
+       return c;
+       
+    }
+    Integer[][] process(Integer a[][],Integer b[][]){
+        Integer[][] c=new Integer[a.length][a.length];
+        try{
+         if(a.length==b.length){
+           for(int i=0;i<c.length;i++){
+              for(int j=0;j<c.length;j++){
+                c[i][j]=a[i][j]*b[i][j];
+              }
+           }
+           display(c);
+           }
+           else{
+             throw new Exception("Size of Arrays are not Equal");
+           }
+        }
+        catch(Exception d){
+            System.out.println(d.getMessage());
+        }
+        return c;
+    }
+    void display(Integer a){
+        System.out.println(" * SCALAR MULTIPLICATION *");
+        System.out.println(a);
+    }
+    void display(Integer a[]){
+        System.out.println(" * VECTOR MULTIPLICATION *");
+        System.out.println(Arrays.toString(a));
+    }
+    void display(Integer a[][]){
+        System.out.println(" * MATRIX MULTIPLICATION *");
+        for(int i=0;i<a.length;i++){
+            for(int j=0;j<a.length;j++){
+                System.out.print(a[i][j]+"\t");
+            }
+            System.out.println("");
+        }
+    }
+}
+
+public class Solution17 {
+    
+    public static void main(String[] args) {
+       Random dany=new Random();
+       Multiply obj=new Multiply();
+       int a=dany.nextInt(100);
+       int b=dany.nextInt(100);
+       Integer c[] = new Integer[5],d[]=new Integer[5];
+       for(int i=0;i<c.length;i++){
+           c[i]=dany.nextInt(100);
+           d[i]=dany.nextInt(100);
+       }
+       Integer[][] x=new Integer[3][3],y=new Integer[3][3];
+       for(int i=0;i<x.length;i++){
+           for(int j=0;j<x.length;j++){
+             x[i][j]=dany.nextInt(100);
+             y[i][j]=dany.nextInt(100);
+           }
+       }
+       obj.process(a,b);
+       obj.process(c,d);
+       obj.process(x,y);
+    } 
+}
