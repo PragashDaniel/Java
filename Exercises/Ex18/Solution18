@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Random;
+
 interface multiply{
     Object process(Object a,Object b);
     void display(Object a);
@@ -19,8 +22,8 @@ class ScalarMultiply implements multiply{
         System.out.println(a);
     }
 }
-class VectorMultiply{
-    Object process(Object a,Object b){
+class VectorMultiply extends ScalarMultiply{
+    public Object process(Object a,Object b){
        Integer[] num1=(Integer[]) a;
        Integer[] num2=(Integer[]) b;
        Integer[] num=new Integer[num1.length];
@@ -44,7 +47,7 @@ class VectorMultiply{
        
     }
 
-    void display(Object c) {
+    public void display(Object c) {
        Integer[] num=(Integer[]) c;
         System.out.println(Arrays.toString(num));
     }
@@ -52,9 +55,9 @@ class VectorMultiply{
       
 }
 
-class MatrixMultiply{
+class MatrixMultiply extends VectorMultiply{
 
-    Object process(Object a, Object b) {
+        public Object process(Object a, Object b) {
         Integer[][] c=(Integer[][])a;
         Integer[][] d=(Integer[][])b;
         Integer[][] num=new Integer[c.length][d.length];
@@ -77,7 +80,7 @@ class MatrixMultiply{
         return num;
       }
 
-       void display(Object num) {
+       public void display(Object num) {
            Integer[][] c=(Integer[][]) num;
            for(int i=0;i<c.length;i++){
             for(int j=0;j<c.length;j++){
