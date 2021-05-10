@@ -15,9 +15,9 @@ Java OOPS..
 ## Problem definition:
 
 - Goal of this exercise is to create a class which read data from a file called heart.csv and write the statistical summary in a another file.
-- For statistical summary use the code from Exercise11 as a inner class.
+- For statistical summary use the code from Exercise12 as a inner class.
 - Create class called FeatureSummaryGenerator and define your own methods and also implement regex for string processing.
-- So totally you need to use two classes FeatureSummaryGenerator and class from Exercise11.
+- So totally you need to use two classes FeatureSummaryGenerator and class from Exercise12.
 - Design the class by yourself and also the methods properly to serve the purpose.
 - File output should be in json format and also it should have a meaningful parameters.
 - Also write FileException handling mechanism.
