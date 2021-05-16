@@ -1,0 +1,87 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Scanner;
+class FeatureSummaryGenerator
+{ 
+    FeatureSummaryGenerator.StatisticalSummary obj=new FeatureSummaryGenerator.StatisticalSummary();
+    void split(String path) throws  Exception
+    {
+       String str;
+       String Line;
+       float num=0;
+       int count=0;
+       ArrayList arr=new ArrayList();
+       Scanner dany=new Scanner(System.in);
+       BufferedReader br=new BufferedReader(new FileReader(path));
+       System.out.print("Enter range in 0 to 13 : ");
+       int n=dany.nextInt();
+       while((Line=br.readLine())!=null)
+       {
+            String[] s=Line.split(",");
+            str=s[n];
+            str=str.replaceAll("[^\\d]","0");
+            arr.add(Float.parseFloat(str));
+            num=num+Float.parseFloat(str);
+            count++;
+        }
+        obj.Mean(num,count);
+        obj.Mode(arr);
+    }
+    class StatisticalSummary
+    {
+        void Mode(ArrayList arr)
+        {
+            float element=0;
+            int count=0;
+            for(int i=0;i<arr.size();i++){
+                int c=0;
+                for(int j=0;j<arr.size();j++)
+                {
+                    if(arr.get(j).equals(arr.get(i))){
+                        c++;
+                    }
+                }
+                if(c>count){
+                    element=(float) arr.get(i);
+                    count=c;
+                }
+            }
+            System.out.println("Mode : "+element);
+            System.out.println("Frequency : "+count);
+        }
+       void Mean(float num,int count)
+       {
+            float n=num/count;
+            System.out.println("Mean : "+n);
+            Varience(num,count,n);
+        }   
+        void Varience(float num,int count,float n)
+        {
+            float var=0;
+            var=(float)(var+Math.pow(num-n,2));
+            var=var/count;
+            System.out.println("Varience : "+var);
+            SD(var);
+            NOE(count);
+        }
+        void SD(Float varience)
+        {
+            float sd=(float) Math.sqrt(varience);
+            System.out.println("Standard Deviation : "+sd);
+        }
+        void NOE(int count)
+        {
+            System.out.println("No. of. Elements : "+count);
+        }
+    }
+}
+
+public class Solution21
+{
+    public static void main(String[] args) throws Exception 
+    { 
+       FeatureSummaryGenerator obj=new FeatureSummaryGenerator();
+       obj.split("/home/dany/Desktop/heart.csv"); 
+    }
+}
