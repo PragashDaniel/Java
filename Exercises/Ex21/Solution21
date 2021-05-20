@@ -1,38 +1,94 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.Scanner;
-class FeatureSummaryGenerator
-{ 
-    FeatureSummaryGenerator.StatisticalSummary obj=new FeatureSummaryGenerator.StatisticalSummary();
-    void split(String path) throws  Exception
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+class FSG
+{
+    static class SS
     {
-       String str;
-       String Line;
-       float num=0;
-       int count=0;
-       ArrayList arr=new ArrayList();
-       Scanner dany=new Scanner(System.in);
-       BufferedReader br=new BufferedReader(new FileReader(path));
-       System.out.print("Enter range in 0 to 13 : ");
-       int n=dany.nextInt();
-       while((Line=br.readLine())!=null)
-       {
-            String[] s=Line.split(",");
-            str=s[n];
-            str=str.replaceAll("[^\\d]","0");
-            arr.add(Float.parseFloat(str));
-            num=num+Float.parseFloat(str);
-            count++;
-        }
-        obj.Mean(num,count);
-        obj.Mode(arr);
-    }
-    class StatisticalSummary
-    {
-        void Mode(ArrayList arr)
+       private JSONObject obj1;
+       private JSONObject obj2;
+       private JSONObject obj3;
+       private JSONObject obj4;
+       private JSONObject obj5;
+       private JSONObject obj6;
+       private final Scanner dany=new Scanner(System.in);
+        SS(String path) throws Exception
         {
-            float element=0;
+           BufferedReader br =new BufferedReader(new FileReader(path));
+           String str=br.readLine();
+           ArrayList arr=new ArrayList();
+           String S[]=str.split(",");
+           System.out.print("Enter the value in range of 0 to "+S.length+("-1 : "));
+           int n=dany.nextInt();
+           while((str=br.readLine())!=null)
+           {  
+              String s[]=str.split(",");
+              arr.add(Integer.parseInt(s[n]));
+           }
+           SetMean(S[n],arr);
+           setVarience(S[n],arr);
+           setSD(S[n],arr);
+           setMode(S[n],arr);
+           setElements(S[n],arr);
+           setNOE(S[n],arr);
+        }
+        private void SetMean(String str,ArrayList arr) throws JSONException
+        {
+            JSONObject obj=new JSONObject();
+            float sum=0;
+            float mean=0;
+            for(int i=0;i<arr.size();i++)
+            {
+                sum=sum+(int)arr.get(i);
+            }
+            mean=sum/arr.size();
+            obj.put(str,mean);
+            this.obj1=obj;
+        }
+        private void setVarience(String str,ArrayList arr) throws JSONException
+        {
+            JSONObject obj=new JSONObject();
+            float sum=0;
+            float mean=0;
+            float var=0;
+            for(int i=0;i<arr.size();i++)
+            {
+                sum=sum+(int)arr.get(i);
+            }
+            mean=sum/arr.size();
+            var=(float)(var+Math.pow(sum-mean,2));
+            var=var/arr.size();   
+            obj.put(str,var);
+            this.obj2=obj;
+        }
+        private void setSD(String str,ArrayList arr) throws JSONException
+        {
+            JSONObject obj=new JSONObject();
+            float sum=0;
+            float mean=0;
+            float var=0;
+            for(int i=0;i<arr.size();i++)
+            {
+                sum=sum+(int)arr.get(i);
+            }
+            mean=sum/arr.size();
+            var=(float)(var+Math.pow(sum-mean,2));
+            var=var/arr.size();   
+            float sd=(float) Math.sqrt(var);
+            obj.put(str,sd);
+            this.obj3=obj;
+        }
+        private void setMode(String str,ArrayList arr) throws JSONException
+        {
+            JSONObject obj=new JSONObject();
+            int element=0;
             int count=0;
             for(int i=0;i<arr.size();i++){
                 int c=0;
@@ -43,45 +99,103 @@ class FeatureSummaryGenerator
                     }
                 }
                 if(c>count){
-                    element=(float) arr.get(i);
+                    element=(int) arr.get(i);
                     count=c;
                 }
             }
-            System.out.println("Mode : "+element);
-            System.out.println("Frequency : "+count);
+            obj.put(str,element+" & "+count);
+            this.obj4=obj;
         }
-       void Mean(float num,int count)
-       {
-            float n=num/count;
-            System.out.println("Mean : "+n);
-            Varience(num,count,n);
-        }   
-        void Varience(float num,int count,float n)
+        private void setElements(String str,ArrayList arr) throws JSONException
         {
-            float var=0;
-            var=(float)(var+Math.pow(num-n,2));
-            var=var/count;
-            System.out.println("Varience : "+var);
-            SD(var);
-            NOE(count);
+            JSONObject obj=new JSONObject();
+            obj.put(str,arr);
+            this.obj5=obj;
         }
-        void SD(Float varience)
+        private void setNOE(String str,ArrayList arr) throws JSONException
         {
-            float sd=(float) Math.sqrt(varience);
-            System.out.println("Standard Deviation : "+sd);
+           JSONObject obj=new JSONObject();
+           obj.put(str,arr.size());
+           this.obj6=obj;
         }
-        void NOE(int count)
+        void setpath() throws IOException
         {
-            System.out.println("No. of. Elements : "+count);
+           Scanner sc=new Scanner(System.in);
+           System.out.print("Enter a new/correct path for save the file : ");
+           String str=sc.nextLine();
+           try{
+              File f1=new File(str);
+              f1.mkdirs();
+              if(f1.exists() && str.length()>0)
+              {
+                 File f2=new File(str+""+"JsonFile.json");
+                 f2.createNewFile();
+                 FileWriter fw=new FileWriter(f2);
+                 fw.write("Mean : "+obj1.toString()+"\n");
+                 fw.write("Varience : "+obj2.toString()+"\n");
+                 fw.write("Standard Deviation : "+obj3.toString()+"\n");
+                 fw.write("Mode & Frequence : "+obj4.toString()+"\n");
+                 fw.write("All Elements : "+obj5.toString()+"\n");
+                 fw.write("Number of Elements : "+obj6.toString()+"\n");
+                 fw.flush();
+                 System.out.println("   *** Created Successfully ***   ");
+                 System.out.println("Your Path : "+f1.getAbsolutePath());
+              }
+              else
+              {
+                  throw new Exception("Error: *** Your path is invalid ***");
+              }
+           }
+           catch(Exception e)
+           {
+               System.out.println(e.getMessage());
+           }
+            
+        }
+        JSONObject getMean()
+        {
+            System.out.print("Mean :");
+            return obj1;
+        }
+        JSONObject getVarience()
+        {
+            System.out.print("Varience : ");
+            return obj2;
+        }
+        JSONObject getStandardDeviation()
+        {
+            System.out.print("Standard Deviation : ");
+            return obj3;
+        }
+        JSONObject getMode()
+        {
+            System.out.print("Mode & Frequency : ");
+            return obj4;
+        }
+        JSONObject getTotalElements()
+        {
+            System.out.print("Total Elements : ");
+            return obj5;
+        }
+        JSONObject getTotalSize()
+        {
+            System.out.print("Size of Elements : ");
+            return obj6;
         }
     }
 }
 
 public class Solution21
 {
-    public static void main(String[] args) throws Exception 
-    { 
-       FeatureSummaryGenerator obj=new FeatureSummaryGenerator();
-       obj.split("/home/dany/Desktop/heart.csv"); 
+    public static void main(String[] args) throws Exception
+    {
+        FSG.SS obj=new FSG.SS("/home/dany/Desktop/heart.csv");
+        System.out.println(obj.getMean());
+        System.out.println(obj.getVarience());
+        System.out.println(obj.getStandardDeviation());
+        System.out.println(obj.getMode());
+        System.out.println(obj.getTotalElements());
+        System.out.println(obj.getTotalSize());
+        obj.setpath();
     }
 }
