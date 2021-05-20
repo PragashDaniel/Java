@@ -10,15 +10,10 @@ import org.json.JSONObject;
 
 class FSG
 {
-    static class SS
+    static class SS 
     {
-       private JSONObject obj1;
-       private JSONObject obj2;
-       private JSONObject obj3;
-       private JSONObject obj4;
-       private JSONObject obj5;
-       private JSONObject obj6;
-       private final Scanner dany=new Scanner(System.in);
+        private final JSONObject[] object= new JSONObject[6];
+        private final Scanner dany=new Scanner(System.in);
         SS(String path) throws Exception
         {
            BufferedReader br =new BufferedReader(new FileReader(path));
@@ -50,7 +45,7 @@ class FSG
             }
             mean=sum/arr.size();
             obj.put(str,mean);
-            this.obj1=obj;
+            this.object[0]=obj;
         }
         private void setVarience(String str,ArrayList arr) throws JSONException
         {
@@ -66,7 +61,7 @@ class FSG
             var=(float)(var+Math.pow(sum-mean,2));
             var=var/arr.size();   
             obj.put(str,var);
-            this.obj2=obj;
+            this.object[1]=obj;
         }
         private void setSD(String str,ArrayList arr) throws JSONException
         {
@@ -83,7 +78,7 @@ class FSG
             var=var/arr.size();   
             float sd=(float) Math.sqrt(var);
             obj.put(str,sd);
-            this.obj3=obj;
+            this.object[2]=obj;
         }
         private void setMode(String str,ArrayList arr) throws JSONException
         {
@@ -104,19 +99,19 @@ class FSG
                 }
             }
             obj.put(str,element+" & "+count);
-            this.obj4=obj;
+            this.object[3]=obj;
         }
         private void setElements(String str,ArrayList arr) throws JSONException
         {
             JSONObject obj=new JSONObject();
             obj.put(str,arr);
-            this.obj5=obj;
+            this.object[4]=obj;
         }
         private void setNOE(String str,ArrayList arr) throws JSONException
         {
            JSONObject obj=new JSONObject();
            obj.put(str,arr.size());
-           this.obj6=obj;
+           this.object[5]=obj;
         }
         void setpath() throws IOException
         {
@@ -131,12 +126,12 @@ class FSG
                  File f2=new File(str+""+"JsonFile.json");
                  f2.createNewFile();
                  FileWriter fw=new FileWriter(f2);
-                 fw.write("Mean : "+obj1.toString()+"\n");
-                 fw.write("Varience : "+obj2.toString()+"\n");
-                 fw.write("Standard Deviation : "+obj3.toString()+"\n");
-                 fw.write("Mode & Frequence : "+obj4.toString()+"\n");
-                 fw.write("All Elements : "+obj5.toString()+"\n");
-                 fw.write("Number of Elements : "+obj6.toString()+"\n");
+                 fw.write("Mean : "+object[0]+"\n");
+                 fw.write("Varience : "+object[1]+"\n");
+                 fw.write("Standard Deviation : "+object[2]+"\n");
+                 fw.write("Mode & Frequence : "+object[3]+"\n");
+                 fw.write("All Elements : "+object[4]+"\n");
+                 fw.write("Number of Elements : "+object[5]+"\n");
                  fw.flush();
                  System.out.println("   *** Created Successfully ***   ");
                  System.out.println("Your Path : "+f1.getAbsolutePath());
@@ -155,32 +150,32 @@ class FSG
         JSONObject getMean()
         {
             System.out.print("Mean :");
-            return obj1;
+            return object[0];
         }
         JSONObject getVarience()
         {
             System.out.print("Varience : ");
-            return obj2;
+            return object[1];
         }
         JSONObject getStandardDeviation()
         {
             System.out.print("Standard Deviation : ");
-            return obj3;
+            return object[2];
         }
         JSONObject getMode()
         {
             System.out.print("Mode & Frequency : ");
-            return obj4;
+            return object[3];
         }
         JSONObject getTotalElements()
         {
             System.out.print("Total Elements : ");
-            return obj5;
+            return object[4];
         }
         JSONObject getTotalSize()
         {
             System.out.print("Size of Elements : ");
-            return obj6;
+            return object[5];
         }
     }
 }
@@ -190,12 +185,12 @@ public class Solution21
     public static void main(String[] args) throws Exception
     {
         FSG.SS obj=new FSG.SS("/home/dany/Desktop/heart.csv");
+        obj.setpath();
         System.out.println(obj.getMean());
         System.out.println(obj.getVarience());
         System.out.println(obj.getStandardDeviation());
         System.out.println(obj.getMode());
         System.out.println(obj.getTotalElements());
         System.out.println(obj.getTotalSize());
-        obj.setpath();
     }
 }
