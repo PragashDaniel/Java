@@ -13,7 +13,7 @@ Java Streams:
 
 - Create a class called Student with two members student_name and student_mark and also use getter and setter methods to assign and retrive value.
 - Create a List of 100 students like List<Student>.
-- Assign randomized name for each student using exercise 19 and randomized mark for each student using random numbers between 1 to 100.
+- Assign randomized name for each student using exercise 20 and randomized mark for each student using random numbers between 1 to 100.
 - Create a class JavaStreamAdvancedWorker.
 - Create a  method odd or even function which takes input as a integer and return boolean true if the input is odd else boolean false.
 - Create a method for cube of the given number input integer and output integer  
