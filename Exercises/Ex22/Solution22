@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+
+class JavaStreamWorker
+{
+   static boolean oddoreven(int num)
+   {
+       return num%2==0;
+   }    
+   static int cube(int n)
+   {
+       return n*n*n;
+   }
+   static List process1(List<Integer> num)
+   {
+       return num.stream().filter(n->!oddoreven(n)).sorted().collect(Collectors.toList());
+   }
+   static Integer process2(List<Integer> num)
+   {
+      return Math.toIntExact(num.stream().filter(n->oddoreven(n)).sorted().distinct().count());
+   }
+   static List process3(List<Integer> num)
+   {
+      return num.stream().filter(n->oddoreven(n)).map(n->cube(n)).sorted().collect(Collectors.toList());
+   }
+   static Integer process4(List<Integer> num)
+   {
+       return num.stream().map(n->cube(n)).sorted((x,y)->y.compareTo(x)).limit(3).collect(Collectors.summingInt(Integer::intValue));
+   }
+}
+public class Solution22
+{
+    public static void main(String[] args) 
+    {
+        List list=new ArrayList();
+        Random num=new Random();
+        int i=0;
+        do
+        { 
+            list.add(num.nextInt(100));
+            i++;
+        }while(i<5);
+        System.out.println("List : "+list);
+        System.out.println("Odd Integers : "+JavaStreamWorker.process1(list));
+        System.out.println("Number of even elements : "+JavaStreamWorker.process2(list));
+        System.out.println("Cube of even numbers : "+JavaStreamWorker.process3(list));
+        System.out.println("Sum of top 3 max numbers : "+JavaStreamWorker.process4(list));
+    }
+}    
