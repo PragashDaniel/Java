@@ -15,9 +15,6 @@ Java Streams:
 - Create a List of 100 students like List<Student>.
 - Assign randomized name for each student using exercise 20 and randomized mark for each student using random numbers between 1 to 100.
 - Create a class JavaStreamAdvancedWorker.
-- Create a  method odd or even function which takes input as a integer and return boolean true if the input is odd else boolean false.
-- Create a method for cube of the given number input integer and output integer  
-- Generate a Integer List of N elements fill list with random integers.
 - Create a method called List<String> passMark(List<Student>, Integer passMarkThreshold) use java streams to complete the task
 - - Functionality => return the student names in a list who are above the passMarkThreshold.   
 - Create a method called Student firstRankStudent(List<Student>) use java streams to complete the task.
