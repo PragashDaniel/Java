@@ -1,0 +1,94 @@
+import java.util.Random;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+class Name_Suggester
+{
+    String NameSuggester()
+    {
+       StringBuilder obj=new StringBuilder();  
+       int a[] =new int[6];
+       char[] ch=new char[a.length];
+       Random num=new Random();
+       for(int i=0;i<a.length;i++)
+       {
+          a[i]=num.nextInt((90-65)+1)+65;
+          ch[i]=(char)a[i];
+          obj.append(ch[i]);   
+       }
+       return obj.toString();
+    }
+}
+class Student
+{
+    private String Name;
+    private Integer Mark;
+    
+    Student(String Name,Integer num)
+    {
+       this.Name=Name;
+       this.Mark=num;
+    }
+    String Name()
+    {
+       return Name;
+    }
+    Integer Marks()
+    {
+       return Mark;
+    }
+    public String toString()
+    {
+       return "| Name : "+Name+", Mark : "+Mark+"| "; 
+    }
+}
+class JASW
+{
+    List passMark(List<Student> list,Integer passMarkThreshold)
+    {
+        return list.stream().filter(i->i.Marks()>passMarkThreshold).map(i->i.Name()).collect(Collectors.toList());
+    } 
+    Student topper(List<Student> list)
+    {
+        return list.stream().max((x,y)->x.Marks().compareTo(y.Marks())).get();
+    }
+    Integer numberOfFailures(List<Student> list,Integer passMarkThreshold)
+    {
+        return Math.toIntExact(list.stream().filter(i->i.Marks()<passMarkThreshold).count());
+    }
+    void LastFiveStudents(List<Student> list)
+    {
+        int count=(int) list.stream().count();
+        list.stream().sorted((x,y)->y.Marks().compareTo(x.Marks())).skip(count-5).collect(Collectors.toList()).forEach(i->System.out.print(i));
+    }
+    boolean AllPass(List<Student> l,Integer passMarkThreshold)
+    {
+        return l.stream().allMatch(i->i.Marks()<passMarkThreshold);
+    }
+    Map<Boolean,List<Student>> seperateStudents(List<Student> l,Integer passMarkThreshold)
+    {
+         return l.stream().collect(Collectors.partitioningBy(i->i.Marks()>passMarkThreshold));
+    }
+}
+public class Solution23 
+{
+    public static void main(String[] args) 
+    {
+        Random random=new Random();
+        Name_Suggester obj1=new Name_Suggester();
+        JASW obj2=new JASW();
+        List list=new ArrayList();
+        for (int i=0;i<=100;i++) 
+        {
+            list.add(new Student(obj1.NameSuggester(),random.nextInt((100-1)+1)+1)); 
+        }
+        System.out.println("Students Passed : "+obj2.passMark(list,35));
+        System.out.println("Topper of the class : "+obj2.topper(list));
+        System.out.println("Number of Failures : "+obj2.numberOfFailures(list,35));
+        System.out.print("Last Five Students : ");obj2.LastFiveStudents(list);
+        System.out.println("\nAll Pass : "+obj2.AllPass(list,35));
+        System.out.println("Splited the students based on pass mark threshold : "+obj2.seperateStudents(list,35));
+    }
+}
