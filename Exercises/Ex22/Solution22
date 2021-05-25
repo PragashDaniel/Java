@@ -7,7 +7,7 @@ class JavaStreamWorker
 {
    static boolean oddoreven(int num)
    {
-       return num%2==0;
+       return num%2==1;
    }    
    static int cube(int n)
    {
@@ -15,15 +15,15 @@ class JavaStreamWorker
    }
    static List process1(List<Integer> num)
    {
-       return num.stream().filter(n->!oddoreven(n)).sorted().collect(Collectors.toList());
+       return num.stream().filter(n->oddoreven(n)).sorted().collect(Collectors.toList());
    }
    static Integer process2(List<Integer> num)
    {
-      return Math.toIntExact(num.stream().filter(n->oddoreven(n)).sorted().distinct().count());
+      return Math.toIntExact(num.stream().filter(n->!oddoreven(n)).sorted().distinct().count());
    }
    static List process3(List<Integer> num)
    {
-      return num.stream().filter(n->oddoreven(n)).map(n->cube(n)).sorted().collect(Collectors.toList());
+      return num.stream().filter(n->!oddoreven(n)).map(n->cube(n)).sorted().collect(Collectors.toList());
    }
    static Integer process4(List<Integer> num)
    {
