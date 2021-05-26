@@ -1,0 +1,38 @@
+class ArithGeneric<T extends Number>
+{ 
+    T add(Integer a,Integer b)
+    {
+        Integer c=a+b;
+        System.out.print("Addition : ");
+        return (T)c;
+    }
+    T sub(Integer a,Integer b)
+    {
+        Integer c=a-b;
+        System.out.print("Subtraction : ");
+        return (T)c;
+    }
+    T mul(Integer a,Integer b)
+    {
+        Integer c=a*b;
+        System.out.print("Multiplication : ");
+        return (T)c;
+    }
+    T div(Integer a,Integer b)
+    {
+        Integer c=a/b;
+        System.out.print("Division : ");
+        return (T)c;
+    }
+}
+public class Solution24 
+{
+    public static void main(String[] args) 
+    {
+        ArithGeneric<Integer> obj=new ArithGeneric<>();
+        System.out.println(obj.add(10,20));
+        System.out.println(obj.sub(15,5));
+        System.out.println(obj.mul(3,3));
+        System.out.println(obj.div(2,2));
+    }
+}
