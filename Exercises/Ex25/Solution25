@@ -1,0 +1,107 @@
+class ArithGeneric<T extends Number>
+{
+    T add(T a, T b)
+    {
+        System.out.print("Addition : ");
+        if (a instanceof Integer) 
+        {
+            return (T) Integer.valueOf(((a.intValue() + b.intValue())));
+        }
+        else if (a instanceof Float ) 
+        {
+            return (T) Float.valueOf(((a.floatValue() + b.floatValue())));
+        }
+        else if (a instanceof Double) 
+        {
+            return (T) Double.valueOf((a.doubleValue() + b.doubleValue()));
+        }
+        else
+        {
+           throw new IllegalArgumentException();
+        }   
+    }
+    T sub(T a, T b)
+    {
+        System.out.print("Subtraction : ");
+        if (a instanceof Integer) 
+        {
+            return (T) Integer.valueOf(((a.intValue() - b.intValue())));
+        }
+        else if (a instanceof Float ) 
+        {
+            return (T) Float.valueOf(((a.floatValue() - b.floatValue())));
+        }
+        else if (a instanceof Double) 
+        {
+            return (T) Double.valueOf((a.doubleValue() - b.doubleValue()));
+        }
+        else
+        {
+           throw new IllegalArgumentException();
+        }
+    }
+    T mul(T a, T b)
+    {    
+        System.out.print("Multiplication : ");
+        if (a instanceof Integer) 
+        {
+            return (T) Integer.valueOf(((a.intValue() * b.intValue())));
+        }
+        else if (a instanceof Float ) 
+        {
+            return (T) Float.valueOf(((a.floatValue() * b.floatValue())));
+        }
+        else if (a instanceof Double) 
+        {
+            return (T) Double.valueOf((a.doubleValue() * b.doubleValue()));
+        }
+        else
+        {
+           throw new IllegalArgumentException();
+        }
+    }
+    T div(T a, T b)
+    {
+        System.out.print("Division : ");
+        if (a instanceof Integer) 
+        {
+            return (T) Integer.valueOf(((a.intValue() / b.intValue())));
+        }
+        else if (a instanceof Float ) 
+        {
+            return (T) Float.valueOf(((a.floatValue() / b.floatValue())));
+        }
+        else if (a instanceof Double) 
+        {
+            return (T) Double.valueOf((a.doubleValue() / b.doubleValue()));
+        }
+        else
+        {
+           throw new IllegalArgumentException();
+        }
+    }
+}
+public class Solution25 
+{
+    public static void main(String args[]) 
+    {
+        ArithGeneric<Integer> obj1 = new ArithGeneric<>();
+        System.out.println("*** Instance of Integer ***");
+        System.out.println(obj1.add(5,6));
+        System.out.println(obj1.sub(5,6));
+        System.out.println(obj1.mul(5,6));
+        System.out.println(obj1.div(5,5));
+        System.out.println("*** Instance of Float ***");
+        ArithGeneric<Float> obj2 = new ArithGeneric<>();
+        System.out.println(obj2.add(5.2f,6.2f));
+        System.out.println(obj2.sub(5.2f,6.2f));
+        System.out.println(obj2.mul(5.2f,6.2f));
+        System.out.println(obj2.div(5.2f,6.2f));
+        System.out.println("*** Instance of Double ***");
+        ArithGeneric<Double> obj3 = new ArithGeneric<>();
+        System.out.println(obj3.add(5.1,6.4));
+        System.out.println(obj3.sub(5.1,6.4));
+        System.out.println(obj3.mul(5.1,6.4));
+        System.out.println(obj3.div(5.1,6.4));
+    }
+}
