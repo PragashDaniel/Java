@@ -1,31 +1,31 @@
-class ArithGeneric<T extends Number>
+class ArithGeneric
 { 
-    T add(T a,T b)
+    <T extends Number> T add(T a,T b)
     {
         System.out.print("Addition : ");
-        return (T) Integer.valueOf(a.intValue()+b.intValue());
+        return (T) Double.valueOf(a.doubleValue()+b.doubleValue());
     }
-    T sub(Integer a,Integer b)
+    <T extends Number> T sub(Integer a,Integer b)
     {
        System.out.print("Subtraction : ");
-       return (T) Integer.valueOf(a.intValue()- b.intValue());
+       return (T) Double.valueOf(a.doubleValue()-b.doubleValue());
     }
-    T mul(T a,T b)
+    <T extends Number> T mul(T a,T b)
     {
         System.out.print("Multiplication : ");
-        return (T) Integer.valueOf(a.intValue()*b.intValue());
+        return (T) Double.valueOf(a.doubleValue()*b.doubleValue());
     }
-    T div(T a,T b)
+    <T extends Number> T div(T a,T b)
     {
         System.out.print("Division : ");
-        return (T) Integer.valueOf(a.intValue()/b.intValue());
+        return (T) Double.valueOf(a.doubleValue()/b.doubleValue());
     }
 }
 public class Solution24 
 {
     public static void main(String[] args) 
     {
-        ArithGeneric<Integer> obj=new ArithGeneric<>();
+        ArithGeneric obj=new ArithGeneric();
         System.out.println(obj.add(10,20));
         System.out.println(obj.sub(15,5));
         System.out.println(obj.mul(3,3));
