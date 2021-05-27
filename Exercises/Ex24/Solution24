@@ -1,28 +1,24 @@
 class ArithGeneric<T extends Number>
 { 
-    T add(Integer a,Integer b)
+    T add(T a,T b)
     {
-        Integer c=a+b;
         System.out.print("Addition : ");
-        return (T)c;
+        return (T) Integer.valueOf(a.intValue()+b.intValue());
     }
     T sub(Integer a,Integer b)
     {
-        Integer c=a-b;
-        System.out.print("Subtraction : ");
-        return (T)c;
+       System.out.print("Subtraction : ");
+       return (T) Integer.valueOf(a.intValue()- b.intValue());
     }
-    T mul(Integer a,Integer b)
+    T mul(T a,T b)
     {
-        Integer c=a*b;
         System.out.print("Multiplication : ");
-        return (T)c;
+        return (T) Integer.valueOf(a.intValue()*b.intValue());
     }
-    T div(Integer a,Integer b)
+    T div(T a,T b)
     {
-        Integer c=a/b;
         System.out.print("Division : ");
-        return (T)c;
+        return (T) Integer.valueOf(a.intValue()/b.intValue());
     }
 }
 public class Solution24 
