@@ -1,7 +1,5 @@
 # CORE JAVA
 
-# Java-learn
-
 Git hub repo dedicated for hands on java practise
 
 ## Things to note about this repo
