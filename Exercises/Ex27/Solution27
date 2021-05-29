@@ -1,0 +1,101 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+
+class NameGenerator{
+    String NameSuggester(int length)
+    {
+    StringBuilder obj=new StringBuilder();
+        int a[] =new int[length];
+        char[] ch=new char[length];
+        Random num=new Random();
+        for(int i=0;i<length;i++)
+        {
+            a[i]=num.nextInt((90-65)+1)+65;
+            ch[i]=(char)a[i];
+            obj.append(ch[i]);   
+        }
+    return obj.toString();
+    }
+}
+class Employee implements Comparable<Employee>
+{
+    private String name;
+    private int salary;
+    Employee(String name,Integer salary)
+    {
+        this.name=name;
+        this.salary=salary;
+    }
+    String getName()
+    {
+        return name;
+    }
+    int getSalary()
+    {
+        return salary;
+    }
+    @Override
+    public int compareTo(Employee obj)
+    {
+        System.out.println("SALARY   "+this.salary+" "+obj.salary);
+        if(this.salary<obj.salary)
+        {
+            return 1;
+        }
+        else if(this.salary>obj.salary)
+        {
+            return -1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    public String toString()
+    {
+        return "| Name : "+name+" , Salary : "+salary+" |";
+    }
+}
+class NameLengthSort implements Comparator<Employee>
+{
+    @Override
+    public int compare(Employee obj1, Employee obj2) 
+    {
+       if(obj1.getName().length() > obj2.getName().length())
+       {
+           return 1;
+       }
+       else if(obj1.getName().length() < obj2.getName().length())
+       {
+           return -1;
+       }
+       else
+       {
+          return 0; 
+       }
+    }
+
+}
+public class Solution27 
+{
+    public static void main(String[] args) 
+    {
+        List<Employee> arr=new ArrayList<>();
+        Random rno=new Random();
+        NameGenerator NG=new NameGenerator();
+        for (int i = 0; i < 5; i++) 
+        {
+            arr.add(new Employee(NG.NameSuggester((rno.nextInt(15-5)+1)+5),rno.nextInt((100000-10000)+1)+10000));
+        }
+        List list=arr.stream().sorted().collect(Collectors.toList());
+        System.out.print("   *** SORTED BASED ON SALARY *** \n");
+        list.forEach(System.out::println);
+        Collections.sort(arr,new NameLengthSort());
+        System.out.println(" *** SORTED BASED ON EMPLOYEE NAME ***");
+        arr.forEach(System.out::println);
+    }
+}
