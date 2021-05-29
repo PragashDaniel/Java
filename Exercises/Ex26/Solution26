@@ -1,0 +1,122 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Random;
+import java.util.Stack;
+import java.util.TreeSet;
+class Collection
+{
+    ArrayList insertVal(Integer[] arr) 
+    {
+        ArrayList list=new ArrayList();
+        for (Integer i:arr) 
+        {
+            list.add(i);
+        }
+        System.out.print("List : ");
+        return list;
+    }
+
+    Stack insertValLIFO(Integer[] arr) 
+    {
+        Integer[] array=new Integer[arr.length];
+        Stack<Integer> stack=new Stack<>();
+        for (int i = 0; i < arr.length; i++)
+        {
+            stack.push(arr[i]); 
+        }
+        System.out.print("Stack : ");
+        return stack;
+    }
+    Queue insertValFIFO(Integer[] arr) 
+    {
+        Integer[] array=new Integer[arr.length];
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < arr.length; i++) 
+        {
+           queue.add(arr[i]);
+        }
+        System.out.print("Queue : ");
+        return queue;
+    }
+    HashSet insertValUnique(Integer[] arr) 
+    {
+        HashSet<Integer> hs=new HashSet<>();
+        for (int i = 0; i < arr.length; i++) 
+        {
+            hs.add(arr[i]);
+        }
+        System.out.print("Unique values Hashset : ");
+        return hs;
+    }
+    LinkedHashSet insertValUniqueOrdered(Integer[] arr) 
+    {
+        LinkedHashSet<Integer> hs = new LinkedHashSet<>();
+        for (int i=0;i<arr.length;i++)
+        {
+            hs.add(arr[i]);
+        }
+        System.out.print("Unique ordered values LinkedHashSet : ");
+        return hs;
+    }
+    TreeSet insertValUniqueSorted(Integer[] arr){
+        TreeSet<Integer> ts = new TreeSet<>();
+        for (int i=0;i<arr.length;i++)
+        {
+            ts.add(arr[i]);
+        }
+        System.out.print("Uniques ordered sorted TreeSet : ");
+        return ts;
+    }
+    int sizeDisplay(java.util.Collection<Integer> I)
+    {
+        int counter = 0;
+        for(Integer i:I)
+        {
+            counter++;
+        }
+        System.out.print("Size : ");
+        return counter;
+    }
+}
+public class Solution26 
+{
+    public static void main(String[] args) 
+    {
+        Integer[] arr=new Integer[10]; 
+        Random rno=new Random();
+        Collection obj=new Collection();
+        for (int i = 0; i < arr.length; i++)
+        {
+            arr[i]=rno.nextInt((20-1)+1)+1;
+        }        
+        System.out.println("Insertion Array : "+Arrays.toString(arr));
+        System.out.println(obj.insertVal(arr));
+        Stack<Integer> LIFO=obj.insertValLIFO(arr);
+        Integer[] lifo=new Integer[arr.length];
+        for (int i = 0; i < arr.length; i++) 
+        {
+            lifo[i]=LIFO.pop();
+        }
+        System.out.println("LIFO : "+Arrays.toString(lifo)); 
+        Queue<Integer> FIFO=obj.insertValFIFO(arr);
+        Integer[] fifo=new Integer[arr.length];
+        for (int i = 0; i < arr.length; i++) 
+        {
+            fifo[i]=FIFO.poll();
+        }
+        System.out.println("FIFO : "+Arrays.toString(fifo));
+        System.out.println(obj.insertValUnique(arr));
+        System.out.println(obj.insertValUniqueOrdered(arr));
+        System.out.println(obj.insertValUniqueSorted(arr));
+        System.out.println(obj.sizeDisplay(obj.insertVal(arr)));
+        System.out.println(obj.sizeDisplay(obj.insertValLIFO(arr)));
+        System.out.println(obj.sizeDisplay(obj.insertValFIFO(arr)));
+        System.out.println(obj.sizeDisplay(obj.insertValUnique(arr)));
+        System.out.println(obj.sizeDisplay(obj.insertValUniqueOrdered(arr)));
+        System.out.println(obj.sizeDisplay(obj.insertValUniqueSorted(arr)));
+    }   
+}
