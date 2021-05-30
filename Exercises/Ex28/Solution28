@@ -1,0 +1,38 @@
+interface Arithmetic
+{
+    int Operation(int x,int y);
+}
+@FunctionalInterface
+interface ArithmeticGeneric<T1,T2>
+{
+    T2 Operation(T1 t1,T1 t2);
+}
+public class Solution28 
+{
+    public static void main(String[] args) 
+    {
+        Arithmetic add=(x,y)->{return x+y;};
+        Arithmetic sub=(x,y)->{return x-y;};
+        Arithmetic mul=(x,y)->{return x*y;};
+        Arithmetic div=(x,y)->{return x/y;};
+        Arithmetic mod=(x,y)->{return x%y;};
+        
+        ArithmeticGeneric<Integer,Float> Add = (Integer x,Integer y)->{return Float.valueOf(x+y);};
+        ArithmeticGeneric<Float,Integer> Sub = (Float x,Float y)->{return Math.round(x-y);};
+        ArithmeticGeneric<Double,Float> Mul = (Double x,Double y)->{Double d=x*y;return d.floatValue();};
+        ArithmeticGeneric<Integer,String> Div = (Integer x,Integer y)->{Integer d = x/y;return d.toString();};
+        ArithmeticGeneric<Integer,Double> Mod =(Integer x,Integer y)->{Integer d=x%y;return d.doubleValue();};
+        
+        System.out.println(add.Operation(4,2));
+        System.out.println(sub.Operation(9,3));
+        System.out.println(mul.Operation(34,8));
+        System.out.println(div.Operation(18, 9));
+        System.out.println(mod.Operation(18, 2));
+        
+        System.out.println(Add.Operation(4,2));
+        System.out.println(Sub.Operation(9f,3f));
+        System.out.println(Mul.Operation(3.1,8.4));
+        System.out.println(Div.Operation(18, 9));
+        System.out.println(Mod.Operation(18, 2));
+    }   
+}
