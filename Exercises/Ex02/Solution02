@@ -1,6 +1,7 @@
-//Another solution
-public class Fahrenheit {
-    public static void main(String[] args) {
+public class Fahrenheit 
+{
+    public static void main(String[] args) 
+    {
         Scanner dany=new Scanner(System.in);
         int num=dany.nextInt();
         Fahrenheit obj = new Fahrenheit();
@@ -8,9 +9,9 @@ public class Fahrenheit {
         System.out.println("Fahrenheit :"+F);
     }
     
-    float calculation(float C) { 
-        return C*9/5+32;
-        
+    float calculation(float C) 
+    { 
+        return C*9/5+32;      
     }
     
 }
