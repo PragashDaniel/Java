@@ -1,13 +1,16 @@
 import java.util.Arrays;
 import java.util.Random;
 
-interface multiply{
+interface multiply
+{
     Object process(Object a,Object b);
     void display(Object a);
 }
 
-class ScalarMultiply implements multiply{
-    public Object process(Object a, Object b) {
+class ScalarMultiply implements multiply
+{
+    public Object process(Object a, Object b)
+    {
         int num1=(int)a;
         int num2=(int)b;
         int value=(num1*num2);
@@ -17,82 +20,98 @@ class ScalarMultiply implements multiply{
         
     }
 
-    public void display(Object a) {
-        
+    public void display(Object a)
+    {    
         System.out.println(a);
     }
 }
-class VectorMultiply extends ScalarMultiply{
-    public Object process(Object a,Object b){
+class VectorMultiply extends ScalarMultiply
+{
+    public Object process(Object a,Object b)
+    {
        Integer[] num1=(Integer[]) a;
        Integer[] num2=(Integer[]) b;
        Integer[] num=new Integer[num1.length];
-       try{
-         if(num1.length==num2.length){ 
-            for(int i=0;i<num.length;i++){
+       try
+       {
+         if(num1.length==num2.length)
+         { 
+            for(int i=0;i<num.length;i++)
+            {
                num[i]=num1[i]*num2[i];
             } 
             display(num);
          }
          
-         else{
+         else
+         {
              throw new Exception("Size of Arrays are not equal"); 
          }
        }
-       catch(Exception d){
- 
+       catch(Exception d)
+       {
            System.out.println(d.getMessage());
        }
        return num;
        
     }
 
-    public void display(Object c) {
+    public void display(Object c) 
+    {
        Integer[] num=(Integer[]) c;
-        System.out.println(Arrays.toString(num));
-    }
-
-      
+       System.out.println(Arrays.toString(num));
+    }      
 }
 
-class MatrixMultiply extends VectorMultiply{
-
-        public Object process(Object a, Object b) {
-        Integer[][] c=(Integer[][])a;
-        Integer[][] d=(Integer[][])b;
-        Integer[][] num=new Integer[c.length][d.length];
-        try{
-         if(c.length==d.length){
-           for(int i=0;i<c.length;i++){
-              for(int j=0;j<c.length;j++){
-                num[i][j]=c[i][j]*d[i][j];
-              }
-           }
-           display(num);
-           }
-           else{
-             throw new Exception("Size of Arrays are not Equal");
-           }
-        }
-        catch(Exception error){
-            System.out.println(error.getMessage());
-        }
-        return num;
-      }
-
-       public void display(Object num) {
-           Integer[][] c=(Integer[][]) num;
-           for(int i=0;i<c.length;i++){
-            for(int j=0;j<c.length;j++){
-                System.out.print(c[i][j]+"\t");
+class MatrixMultiply extends VectorMultiply
+{
+        public Object process(Object a, Object b)
+        {
+            Integer[][] c=(Integer[][])a;
+            Integer[][] d=(Integer[][])b;
+            Integer[][] num=new Integer[c.length][d.length];
+            try
+            {
+                if(c.length==d.length)
+                {
+                    for(int i=0;i<c.length;i++)
+                    {
+                        for(int j=0;j<c.length;j++)
+                        {
+                            num[i][j]=c[i][j]*d[i][j];
+                        }
+                    }
+                    display(num);
+                }
+                else
+                {
+                    throw new Exception("Size of Arrays are not Equal");
+                }
             }
-            System.out.println("");
+            catch(Exception error)
+            {
+                System.out.println(error.getMessage());
+            }
+            return num;
+      }
+      public void display(Object num) 
+      {
+           Integer[][] c=(Integer[][]) num;
+           for(int i=0;i<c.length;i++)
+           {
+                for(int j=0;j<c.length;j++)
+                {
+                    System.out.print(c[i][j]+"\t");
+                }
+                System.out.println("");
+            }
         }
-       }
-    }
+ }
     
-public class Solution18{ 
-    public static void main(String[] args) {
+public class Solution18
+{ 
+    public static void main(String[] args)
+    {
         Random dany=new Random();
         Object obj1,obj2,obj3,obj4,obj5,obj6=new Object(); 
         obj1=dany.nextInt(100);
@@ -101,7 +120,8 @@ public class Solution18{
         System.out.println("* SCALAR MULTIPLICATION *"+"\n"+obj1+" "+obj2);
         Object a=obj.process(obj1,obj2);
         Integer[] n = new Integer[5],d=new Integer[5];
-        for(int i=0;i<n.length;i++){
+        for(int i=0;i<n.length;i++)
+        {
            n[i]=dany.nextInt(100);
            d[i]=dany.nextInt(100);
         }
@@ -112,10 +132,12 @@ public class Solution18{
         VectorMultiply objj=new VectorMultiply();
         Object b=objj.process(obj3,obj4);
         Integer[][] x=new Integer[3][3],y=new Integer[3][3];
-        for(int i=0;i<x.length;i++){
-           for(int j=0;j<x.length;j++){
-             x[i][j]=dany.nextInt(100);
-             y[i][j]=dany.nextInt(100);
+        for(int i=0;i<x.length;i++)
+        {
+           for(int j=0;j<x.length;j++)
+           {
+                 x[i][j]=dany.nextInt(100);
+                y[i][j]=dany.nextInt(100);
            }
         }
         obj5=x;
@@ -124,6 +146,4 @@ public class Solution18{
         MatrixMultiply objjj=new MatrixMultiply();
         Object c=objjj.process(obj5,obj6);
     }
-
-    
 }
