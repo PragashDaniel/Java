@@ -9,6 +9,7 @@ public class Oddoreven
         String ore=obj.oddoreven(i);
         System.out.println(ore);    
     }
+    
     String oddoreven(int a)
     {
         if(a%2==0)
