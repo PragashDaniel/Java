@@ -1,28 +1,40 @@
 
-interface Printer {
+interface Printer 
+{
     void display(int n);
 }
-class One implements Printer {
+
+class One implements Printer 
+{
     @Override
-    public void display(int num){
+    public void display(int num)
+    {
         System.out.println("Pattern:1");
-        for(int i=1;i<=num;i++){
-            for(int j=1;j<i;j++){
-                if(j%2!=0){
+        for(int i=1;i<=num;i++)
+        {
+            for(int j=1;j<i;j++)
+            {
+                if(j%2!=0)
+                {
                     System.out.print(j+" ");
                 }
-                else{
+                else
+                {
                     System.out.print("$"+" ");
                 }
             }
             System.out.println(" ");
         }
-        for(int i=num;i>0;i--){
-            for(int j=1;j<=i;j++){
-                if(j%2!=0){
+        for(int i=num;i>0;i--)
+        {
+            for(int j=1;j<=i;j++)
+            {
+                if(j%2!=0)
+                {
                     System.out.print(j+" ");
                 }
-                else{
+                else
+                {
                     System.out.print("$"+" ");
                 }
             }
@@ -31,54 +43,62 @@ class One implements Printer {
     }
 }
 
-class Two implements Printer {
-
-    public void display(int num){
+class Two implements Printer 
+{
+    public void display(int num)
+    {
         System.out.println("\nPattern:2");
         Primes obj =new Primes();
         int value[]=obj.primes(num);
-        for(int i=0;i<=value.length;i++){
-           for(int j=0;j<i;j++) {
+        for(int i=0;i<=value.length;i++)
+        {
+           for(int j=0;j<i;j++)
+           {
                System.out.print(value[j]+" ");
            }
            System.out.println(" ");
        }
-       for(int i=value.length-1;i>=1;i--){
-           for(int j=0;j<i;j++){
+       for(int i=value.length-1;i>=1;i--)
+       {
+           for(int j=0;j<i;j++)
+           {
                System.out.print(value[j]+" ");
            }
            System.out.println(" ");
        }
-        
-
     }
 }
 
 class Primes {
-    public int[] primes(int n){
-      Scanner dany=new Scanner(System.in);
+    public int[] primes(int n)
+    {
+        Scanner dany=new Scanner(System.in);
         System.out.println("Enter the range : ");
-      int range=dany.nextInt();
-      int[] a=new int[n];
-      int x=0;
-      for(int i=2;i<=range;i++){
+        int range=dany.nextInt();
+        int[] a=new int[n];
+        int x=0;
+        for(int i=2;i<=range;i++)
+        {
           boolean name=true;
-          for(int j=2;j<i;j++){
+          for(int j=2;j<i;j++)
+          {
               if(i%j==0){
                  name=false;
                  break;
               }
           }
-          if(name==true){
+          if(name==true)
+          {
               a[x]=i;
               x++;   
           }
-      }
-      return a;
+        }
+        return a;
     }
 }
 
-public class Solution14 {
+public class Solution14 
+{
     public static void main(String[] args)
     {
         Scanner dany = new Scanner(System.in);
@@ -88,6 +108,5 @@ public class Solution14 {
         one.display(n);
         Two two = new Two();
         two.display(n);
-
     }
 }
