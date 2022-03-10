@@ -1,28 +1,32 @@
-public class Exercise08 {
+public class Exercise08 
+{
         static Scanner dany=new Scanner(System.in);
-        static int number = dany.nextInt();
-        
-        public static void main(String[] args) {
-        
-        System.out.println("The total values stored in array is : "+number);
-        Exercise08 obj =new Exercise08();
-        int[] arr =new int[number];
-        Random num=new Random();
-        System.out.println("Main Array : ");
-        for(int i=0;i<number;i++){
-            arr[i]=num.nextInt(100);
-            System.out.print(arr[i]+"\t");
+        static int number = dany.nextInt();        
+        public static void main(String[] args) 
+        {
+                System.out.println("The total values stored in array is : "+number);
+                Exercise08 obj =new Exercise08();
+                int[] arr =new int[number];
+                Random num=new Random();
+                System.out.println("Main Array : ");
+                for(int i=0;i<number;i++)
+                {
+                        arr[i]=num.nextInt(100);
+                        System.out.print(arr[i]+"\t");
+                }
+                System.out.println("\n");
+                int[] values=obj.filter(arr);
+                System.out.println("The reversed value : ");
+                System.out.println(Arrays.toString(values));
         }
-        System.out.println("\n");
-        int[] values=obj.filter(arr);
-        System.out.println("The reversed value : ");
-        System.out.println(Arrays.toString(values));
-    } 
-    int[] filter(int[] array){
-        int a[]=new int[number];
-        for(int i=0;i<array.length;i++){  
-            a[i]=array[array.length-i-1]; 
-    }
-    return a;
-   }
+        
+        int[] filter(int[] array)
+        {
+                int a[]=new int[number];
+                for(int i=0;i<array.length;i++)
+                {  
+                        a[i]=array[array.length-i-1]; 
+                }
+                return a;
+        }
 }
