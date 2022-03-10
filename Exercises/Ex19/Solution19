@@ -1,95 +1,123 @@
 import java.util.Arrays;
 
-class DynamicArray{
+class DynamicArray
+{
     int c;
     float gf;
     float ef;
     private int[] arr=new int[2];
-    DynamicArray(int c,float gf,float ef){
+    DynamicArray(int c,float gf,float ef)
+    {
         this.c=c;
         this.gf=gf;
         this.ef=ef;
     }
-    int[] getArray(){
+    int[] getArray()
+    {
         return arr;
     }
-    void add(int num){
+    void add(int num)
+    {
        arr[c]=num;
        c++;
        grow(arr);
     }
-    void grow(int[] array){
-        if(c==array.length){
+    void grow(int[] array)
+    {
+        if(c==array.length)
+        {
             float num=gf*c;
             int[] newArr=new int[Math.round(c+num)];
-            for(int i=0;i<c;i++){
+            for(int i=0;i<c;i++)
+            {
                newArr[i]=array[i];
             }   
             arr=newArr;
         }
     }
-    void delete_first(){
+    void delete_first()
+    {
         int[] newArr=new int[c];
-        for(int i=0;i<c-1;i++){
+        for(int i=0;i<c-1;i++)
+        {
             newArr[i]=arr[i+1];
         }
         c--;
         arr=newArr;    
         shrink();
     }
-    void delete_last(){
+    void delete_last()
+    {
         int[] newArr= new int[c];
-        for(int i=0;i<c;i++){
-           newArr[i]=arr[i];
-           
+        for(int i=0;i<c;i++)
+        {
+           newArr[i]=arr[i];         
         }
         c--;
         arr=newArr;
         shrink();
     }
-    void delete_index(int index){
-     try{    
-        if(index>=0 && index<=c){
-            int[] newArr=new int[c];
-            for(int i=0;i<c;i++){
-                newArr[i]=arr[i];
+    void delete_index(int index)
+    {
+        try
+        {    
+            if(index>=0 && index<=c)
+            {
+                int[] newArr=new int[c];
+                for(int i=0;i<c;i++)
+                {
+                     newArr[i]=arr[i];
+                }
+                for(int i=index;i<c;i++)
+                {
+                     newArr[i]=arr[i+1];
+                }
+                c--;
+                arr=newArr;
+                shrink();
             }
-            for(int i=index;i<c;i++){
-               newArr[i]=arr[i+1];
+            else
+            {
+                throw new Exception("Error : Enter the Index value in the range of 0 to "+c+"-1.");
             }
-            c--;
-            arr=newArr;
-            shrink();
-        }
-        else{
-            throw new Exception("Error : Enter the Index value in the range of 0 to "+c+"-1.");
-        }
-      }catch(Exception e){
-          System.out.println(e.getMessage());
-      }
+          }
+         catch(Exception e)
+         {
+            System.out.println(e.getMessage());
+         }
     }
-    void shrink(){
-        try{
-           if(arr.length>=c){
-               if((1-(c/arr.length))>ef){
+    void shrink()
+    {
+        try
+        {
+           if(arr.length>=c)
+           {
+               if((1-(c/arr.length))>ef)
+               {
                   int[] newArr=new int[Math.round(c)];
-                  for(int i=0;i<c;i++){
+                  for(int i=0;i<c;i++)
+                  {
                      newArr[i]=arr[i];
                   }
                arr =newArr;
                }
            }
-           else{
+           else
+           {
                throw new Exception("Error : ArrayIndexOutOfBoundException.");
            }
-        }catch(Exception e){
+        }
+        catch(Exception e)
+        {
             System.out.println(e.getMessage());
         }
     }
 }
  
-public class Solution19 {
-    public static void main(String[] args) {      
+public class Solution19
+{
+    public static void main(String[] args) 
+    {      
         DynamicArray obj=new DynamicArray(0,0.30f,0.3f);
         obj.add(1);
         obj.add(2);
