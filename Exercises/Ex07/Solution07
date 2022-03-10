@@ -1,10 +1,9 @@
-public class Exercise07 {
-
-    
+public class Exercise07 
+{   
     static Scanner dany=new Scanner(System.in);
     static int number = dany.nextInt();
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) 
+    {    
         System.out.println("The total values stored in array is : "+number);
         Exercise07 obj =new Exercise07();
         int[] arr =new int[number];
@@ -12,7 +11,8 @@ public class Exercise07 {
         int N=dany.nextInt();
         Random num=new Random();
         System.out.println("Main Array : ");
-        for(int i=0;i<number;i++){
+        for(int i=0;i<number;i++)
+        {
             arr[i]=num.nextInt(100);
             System.out.print(arr[i]+"\t");
         }
@@ -21,14 +21,17 @@ public class Exercise07 {
         int[] values=obj.filter(arr,N);
         System.out.println(Arrays.toString(values));
     } 
-    int[] filter(int[] array,int N){
-        int a[]=new int[number];
-        for(int j=0;j<array.length;j++){
-        if(array[j]<N){
-           a[j]=array[j];
-        }
-       }
-    return a;
-   }
     
+    int[] filter(int[] array,int N)
+    {
+        int a[]=new int[number];
+        for(int j=0;j<array.length;j++)
+        {
+            if(array[j]<N)
+            {
+                a[j]=array[j];
+            }
+        }
+        return a;
+   }
 }
