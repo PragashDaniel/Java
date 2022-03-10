@@ -1,7 +1,7 @@
-//Another solution
-
-public class Avg {
-    public static void main(String[] args){
+public class Avg 
+{
+    public static void main(String[] args)
+    {
         Avg obj = new Avg();
         Scanner dany=new Scanner(System.in);
         float a = dany.nextFloat();
@@ -11,7 +11,8 @@ public class Avg {
         System.out.println("Average :"+average);
     }
 
-    int avg(float a, float b, float c){
+    int avg(float a, float b, float c)
+    {
         int d = (int)(a+b+c);
         return  d/3;
     }
