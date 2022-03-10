@@ -1,8 +1,11 @@
-class Sage{
-    String predictPersonality(String person_name,Integer favorite_number){    
+class Sage
+{
+    String predictPersonality(String person_name,Integer favorite_number)
+    {    
         int nametonum=personNameToNumber(person_name);
         int value=(nametonum+favorite_number)%3;
-        switch(value){
+        switch(value)
+        {
             case 0:
                 System.out.println(" ANALYSTS ");
                 System.out.println("Architect :");
@@ -64,7 +67,8 @@ class Sage{
         } 
         return "";
     }
-    static Integer personNameToNumber(String person_name){
+    static Integer personNameToNumber(String person_name)
+    {
         final Map<Character,Integer> map;
         map=new HashMap<>();
         map.put('a',1);
@@ -94,16 +98,18 @@ class Sage{
         map.put('y',25);
         map.put('z',26);
         Integer num=0;
-        for(int i=0;i<person_name.length();i++){
+        for(int i=0;i<person_name.length();i++)
+        {
             char[] ch=person_name.toCharArray();
             num+=map.get(ch[i]);   
         }
         return num;
     }
 }
-public class Solution16 extends Sage{
-
-    public static void main(String[] args) {
+public class Solution16 extends Sage
+{
+    public static void main(String[] args)
+    {
        Sage obj=new Sage();
        Scanner dany=new Scanner(System.in);
        int i=1;
@@ -118,9 +124,6 @@ public class Solution16 extends Sage{
              System.out.println("         For exit press 0");
              int n=dany.nextInt();
              i=i*n;
-          }while(i==1);
-       
-      
-    }
-    
+          }while(i==1);    
+    }    
 }
