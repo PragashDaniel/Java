@@ -1,23 +1,25 @@
-public class Ex06 {
-
-    public static void main(String[] args) {
-
+public class Ex06 
+{
+    public static void main(String[] args) 
+    {
         Ex06 obj = new Ex06();
         Scanner dany=new Scanner(System.in);
         int n=dany.nextInt();
         float result=obj.randomno(n);
         System.out.println("RESULT :"+result);
     }
-    float randomno(int number) {
+    
+    float randomno(int number) 
+    {
         float[] array = new float[number];
         Random num = new Random();
         float result=1;
-        for(int i=0;i<number;i++){
+        for(int i=0;i<number;i++)
+        {
             array[i]=num.nextInt(100);
             result=result*array[i];
         }       
         System.out.println(Arrays.toString(array));
         return result;
     }
-
 }
